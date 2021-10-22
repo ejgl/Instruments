@@ -18,7 +18,13 @@ class Evora(object):
         # if the first status[0] is 20075 then the camera is not initialized yet and
         # one needs to run the startup method.
         status = andor.GetStatus()
+        #uninit = str(status[0])
+        #extra = str(status[1])
+        
+        
+        
         return "status " + str(status[0]) + "," + str(status[1])
+        #return {
 
     def startup(self):
         """
