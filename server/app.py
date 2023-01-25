@@ -102,7 +102,7 @@ def create_app(test_config=None):
         s.connect(('127.0.0.1', 5503))
         #if req['value']
         s.send(b'home\n')
-        received = s.recv(100).decode()
+        received = s.recv(2048).decode()
         s.close()
         return received
 
@@ -123,7 +123,7 @@ def create_app(test_config=None):
 
         pos_str = f"move {filter_dict[filter]}\n"
         s.send(pos_str.encode('utf-8'))
-        received = s.recv(100).decode()
+        received = s.recv(2048).decode()
         s.close()
         return received
         
@@ -135,7 +135,7 @@ def create_app(test_config=None):
         req = request.get_json(force=True)
         s.connect(('127.0.0.1', 5503))
         s.send(b'home\n')
-        received = s.recv(100).decode()
+        received = s.recv(1024).decode()
         s.close()
         return received
     
@@ -248,7 +248,7 @@ def create_app(test_config=None):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect(('127.0.0.1', 5503))
         s.send(b'getFilter\n')
-        received = s.recv(100).decode()
+        received = s.recv(2048).decode()
         s.close()
         return received
         #pass
